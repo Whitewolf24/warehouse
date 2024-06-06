@@ -15,9 +15,9 @@ class db
         $this->dBname = "warehouse";*/
 
         $this->host = "localhost";
-        $this->dBUsername = "id21410839_marinos";
-        $this->dBPassword = "@24shinigamI92";
-        $this->dBname = "id21410839_warehouse";
+        $this->dBUsername = "";
+        $this->dBPassword = "";
+        $this->dBname = "";
 
         $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dBname;
         $pdo = new PDO($dsn, $this->dBUsername,  $this->dBPassword);
