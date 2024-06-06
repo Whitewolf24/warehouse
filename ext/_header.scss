@@ -21,6 +21,10 @@ header {
     position: relative;
 }
 
+header h1 {
+    margin-bottom: 1.3em;
+}
+
 #add-product-btn {
     right: 11em;
 }
@@ -35,6 +39,35 @@ header {
 
 #cancel-btn {
     left: 3.7em;
+}
+
+
+@media screen and (max-width: 450px) {
+    header {
+        left: 0rem !important;
+        width: 98% !important;
+    }
+
+    #add-product-btn {
+        right: 6rem !important;
+        transform: scale(0.9) !important;
+    }
+
+    #delete-product-btn {
+        left: 4rem !important;
+        transform: scale(0.9) !important;
+    }
+
+
+    #save-product-btn {
+        right: 2rem !important;
+        transform: scale(0.9) !important;
+    }
+    
+    #cancel-btn {
+        left: 4rem !important;
+        transform: scale(0.9) !important;
+    }
 }
 
 /* -------------------------------------------- */

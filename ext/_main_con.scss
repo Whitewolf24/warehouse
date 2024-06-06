@@ -2,6 +2,13 @@
 
 @use 'variables';
 
+@media screen and (max-width: 450px) {
+    form {
+        position: relative !important;
+        bottom: 4rem !important;
+    }
+}
+
 /* First page */
 
 #main_content {
@@ -11,6 +18,12 @@
     justify-content: center;
     margin-block: 3em;
     margin-inline: 13em;
+}
+
+@media screen and (max-width: 450px) {
+    #main_content {
+        margin-inline: 0rem !important;
+    }
 }
 
 .box {

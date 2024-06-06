@@ -26,4 +26,13 @@ h1 {
     height: 0.1em;
 }
 
+
+@media screen and (max-width: 450px) {
+    html {
+        transform: scale(0.9) !important;
+    }
+}
+
+
+
 /* -------------------------------------------- */

@@ -1,8 +1,19 @@
 <?php
-require 'ext/db.php';
-require 'ext/getitems.php';
-require 'ext/showitems.php';
-require 'ext/deleteitems.php';
+//require 'ext/db.php';
+//require 'ext/getitems.php';
+//require 'ext/showitems.php';
+//require 'ext/deleteitems.php';
+
+spl_autoload_register('autoloader');
+
+function autoloader($class)
+{
+   $path = "ext/";
+   $ext = ".php";
+   $dir = $path . $class . $ext;
+
+   include_once $dir;
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,25 +37,74 @@ require 'ext/deleteitems.php';
       <header>
          <h1>Product List</h1>
            <div class="buttons">
-            <button id="add-product-btn" type="submit" formaction="ext/add-product.php">ADD</button>
-            <button id="delete-product-btn" type="submit" name="MASS DELETE" onclick=" <?php
-                                                                                                $erase = new deleteitems();
-                                                                                                @$erase->erase(); ?>">
-               MASS DELETE</button>
+            <button id="add-product-btn" type="submit" name="add">ADD</button>
+            <?php if (isset($_POST['add'])) {
+
+            ?>
+               <script>
+                  window.location.href = "ext/add-product.php";
+               </script>
+               <!--header("Location: ext/add-product.php"); -->
+            <?php
+            } ?>
+            <button id="delete-product-btn" type="submit" name="massdelete">MASS DELETE</button>
+            <?php
+            if (isset($_POST['massdelete'])) {
+               $erase = new deleteitems();
+               @$erase->erase();
+            }
+            ?>
          </div>
       </header>
       <main>
          <div id="main_content">
             <?php
-            $show = new showitems();
-            @$show->show();
+            $show = new getitems();
+            @$show->grabobj();
             ?>
          </div>
       </main>
       <footer>
-         <p>Scandiweb Test Assignment</p>
+         <!--  <p>Scandiweb Test Assignment</p> -->
       </footer>
    </form>
+
+   <style>
+      @media screen and (max-width: 450px) {
+         html {
+            transform: scale(0.9) !important;
+         }
+
+         form {
+            position: relative !important;
+            bottom: 4rem !important;
+         }
+
+         #main_content {
+            margin-inline: 0rem !important;
+         }
+
+         header {
+            left: 0rem !important;
+            width: 100% !important;
+         }
+
+         #add-product-btn {
+            right: 6rem !important;
+            transform: scale(0.9) !important;
+         }
+
+         #delete-product-btn {
+            left: 4rem !important;
+            transform: scale(0.9) !important;
+         }
+
+         footer {
+            left: 0 !important;
+            width: 100% !important;
+         }
+      }
+   </style>
 </body>
 
 </html>

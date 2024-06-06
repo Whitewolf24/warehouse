@@ -1,28 +1,27 @@
 <?php
 
-// Connect to the database //
 class db
 {
-    private $serverName;
+    private $host;
     private $dBUsername;
     private $dBPassword;
     private $dBname;
 
     protected function connect()
     {
-        $this->serverName = "localhost";
-        $this->dBUsername = "mariyeyn";
-        $this->dBPassword = "8pF255nl3LB5V5_#";
-        $this->dBname = "mariyeyn_warehouse";
+        /*$this->host = "Localhost";
+        $this->dBUsername = "root";
+        $this->dBPassword = "";
+        $this->dBname = "warehouse";*/
 
-        $conn = new mysqli($this->serverName, $this->dBUsername, $this->dBPassword, $this->dBname);
+        $this->host = "localhost";
+        $this->dBUsername = "id21410839_marinos";
+        $this->dBPassword = "@24shinigamI92";
+        $this->dBname = "id21410839_warehouse";
 
-        if (!$conn) {
-            die("Connection to database failed: " . mysqli_connect_error());
-        }
-
-        return $conn;
-
-        $conn->close();
+        $dsn = 'mysql:host=' . $this->host . ';dbname=' . $this->dBname;
+        $pdo = new PDO($dsn, $this->dBUsername,  $this->dBPassword);
+        $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        return $pdo;
     }
 }

@@ -48,6 +48,10 @@ header {
   position: relative;
 }
 
+header h1 {
+  margin-bottom: 1.3em;
+}
+
 #add-product-btn {
   right: 11em;
 }
@@ -73,6 +77,7 @@ footer {
   position: relative;
   width: 92%;
 }
+
 footer p {
   margin-top: 1.5em;
   text-align: center;
@@ -80,6 +85,7 @@ footer p {
 
 /* -------------------------------------------- */
 /* Styling the main content of both pages */
+
 /* First page */
 #main_content {
   display: flex;
@@ -89,6 +95,7 @@ footer p {
   margin-block: 3em;
   margin-inline: 13em;
 }
+
 
 .box {
   border: solid black 2px;
@@ -111,6 +118,7 @@ footer p {
   position: relative;
   text-align: center;
 }
+
 .fields p {
   line-height: 0.6;
 }
@@ -122,13 +130,16 @@ footer p {
   margin-top: 2em;
   margin-inline: 2em;
 }
+
 #main_content_add span {
   margin-inline: 2em;
   width: 90%;
 }
+
 #main_content_add input:not(#price) {
   margin-bottom: 1em;
 }
+
 #main_content_add select {
   font-size: max(2.1vmin, 85%);
   grid-area: options;
@@ -148,10 +159,12 @@ footer p {
   grid-template-columns: 5em 10em 15em;
   grid-template-rows: repeat(4, 0.5fr);
 }
+
 #main_content_add_grid span {
   align-self: center;
   width: 90%;
 }
+
 #main_content_add_grid input {
   height: 65%;
   top: 0.7em;
@@ -172,13 +185,16 @@ footer p {
   grid-template-rows: repeat(4, 0.5fr);
   margin-top: 2.3em;
 }
+
 #attrib_form span {
   align-self: center;
   width: 125%;
 }
+
 #attrib_form span:not(#size_span, #size_desc, .size_error, .weight_error, .height_error, .width_error, .length_error) {
   display: none;
 }
+
 #attrib_form input {
   align-self: center;
   height: 55%;
@@ -190,6 +206,7 @@ footer p {
   position: relative;
   width: 80%;
 }
+
 #attrib_form input:not(#size) {
   display: none;
 }
@@ -289,9 +306,12 @@ footer p {
   grid-area: product_descr;
   margin-top: 1em;
 }
+
 #product_desc span:not(#size_desc) {
   bottom: 1.6em;
   position: relative;
 }
 
-/* -------------------------------------------- *//*# sourceMappingURL=style.css.map */
+/* -------------------------------------------- */
+
+/*# sourceMappingURL=style.css.map */
