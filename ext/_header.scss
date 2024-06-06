@@ -1,0 +1,73 @@
+/* Styling the header and its elements */
+
+@use 'variables';
+
+header {
+    align-content: center;
+    border-bottom: solid variables.$hr 2px;
+    padding-bottom: 0.5em;
+    margin-top: 2em;
+    @include variables.headfoot_style;
+}
+
+.buttons button {
+    border: solid black 2px;
+    bottom: 2.6em;
+    display: block;
+    filter: drop-shadow(2px 2px 2px #000);
+    float: right;
+    padding-block: 5px;
+    padding-inline: 10px;
+    position: relative;
+}
+
+header h1 {
+    margin-bottom: 1.3em;
+}
+
+#add-product-btn {
+    right: 11em;
+}
+
+#delete-product-btn {
+    left: 3.5em;
+}
+
+#save-product-btn {
+    right: 8em;
+}
+
+#cancel-btn {
+    left: 3.7em;
+}
+
+
+@media screen and (max-width: 450px) {
+    header {
+        left: 0rem !important;
+        width: 98% !important;
+    }
+
+    #add-product-btn {
+        right: 6rem !important;
+        transform: scale(0.9) !important;
+    }
+
+    #delete-product-btn {
+        left: 4rem !important;
+        transform: scale(0.9) !important;
+    }
+
+
+    #save-product-btn {
+        right: 2rem !important;
+        transform: scale(0.9) !important;
+    }
+    
+    #cancel-btn {
+        left: 4rem !important;
+        transform: scale(0.9) !important;
+    }
+}
+
+/* -------------------------------------------- */

@@ -1,0 +1,245 @@
+/* Styling the main content of both pages */
+
+@use 'variables';
+
+@media screen and (max-width: 450px) {
+    form {
+        position: relative !important;
+        bottom: 4rem !important;
+    }
+}
+
+/* First page */
+
+#main_content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em 2em;
+    justify-content: center;
+    margin-block: 3em;
+    margin-inline: 13em;
+}
+
+@media screen and (max-width: 450px) {
+    #main_content {
+        margin-inline: 0rem !important;
+    }
+}
+
+.box {
+    border: solid black 2px;
+    font-size: variables.$basic_font_size;
+    height: 13em;
+    min-height: 13em;
+    min-width: 15em;
+    width: 15em;
+}
+
+.delete-checkbox {
+    height: 10%;
+    margin-left: 1em;
+    margin-top: 1.5em;
+    width: 7%;
+}
+
+.fields {
+    bottom: 1em;
+    position: relative;
+    text-align: center;
+
+    p {
+        line-height: 0.6;
+    }
+}
+
+/* Second page */
+
+/* Grid for the 1st part of the form */
+
+#main_content_add {
+    font-size: variables.$basic_font_size;
+    margin-top: 2em;
+    margin-inline: 2em;
+
+    span {
+        margin-inline: 2em;
+        width: 90%;
+    }
+
+    input:not(#price) {
+        margin-bottom: 1em;
+    }
+
+    select {
+        font-size: max(2.1vmin, 85%);
+        grid-area: options;
+        height: 35%;
+        justify-self: center;
+        left: 2em;
+        margin-bottom: 3em;
+        position: relative;
+        top: 3.1em;
+        width: 60%;
+    }
+}
+
+#main_content_add_grid {
+    display: grid;
+    gap: 0.5em;
+    grid-template-areas:
+        "skuspan skufield skuerror"
+        "namespan namefield nameerror"
+        "pricespan pricefield priceerror"
+        "types options ...";
+    grid-template-columns: 5em 10em 15em;
+    grid-template-rows: repeat(4, 0.5fr);
+
+    span {
+        align-self: center;
+        width: 90%;
+    }
+
+    input {
+        height: 65%;
+        top: 0.7em;
+        @include variables.grid_input;
+    }
+}
+
+/* Grid for the different types*/
+
+#attrib_form {
+    display: grid;
+    gap: 0.5em;
+    grid-template-areas:
+        "first_attr_span first_attr_field first_attr_error"
+        "product_descr product_descr ...";
+    grid-template-columns: 5em 10em 15em;
+    grid-template-rows: repeat(4, 0.5fr);
+    margin-top: 2.3em;
+
+    span {
+        align-self: center;
+        width: 125%;
+    }
+
+    span:not(#size_span, #size_desc, .size_error, .weight_error, .height_error, .width_error, .length_error) {
+        display: none;
+    }
+
+
+    input {
+        align-self: center;
+        height: 55%;
+        top: 0.5em;
+        @include variables.grid_input;
+    }
+
+    input:not(#size) {
+        display: none;
+    }
+}
+
+/* Grid assign*/
+
+#sku_span {
+    grid-area: skuspan;
+}
+
+#sku {
+    grid-area: skufield;
+}
+
+#sku_error {
+    grid-area: skuerror;
+}
+
+#name_span {
+    grid-area: namespan;
+}
+
+#name {
+    grid-area: namefield;
+}
+
+#name_error {
+    grid-area: nameerror;
+}
+
+#price_span {
+    grid-area: pricespan;
+}
+
+#price {
+    grid-area: pricefield;
+}
+
+#price_error {
+    grid-area: priceerror;
+}
+
+#types {
+    grid-area: types;
+    margin-block: 1em;
+    position: relative;
+    top: 1em;
+}
+
+#size_span,
+#height_span,
+#weight_span {
+    grid-area: first_attr_span;
+}
+
+#size,
+#height,
+#weight {
+    grid-area: first_attr_field;
+}
+
+.size_error,
+.height_error,
+.weight_error {
+    grid-area: first_attr_error;
+}
+
+#size_desc {
+    bottom: 0.3em;
+    position: relative;
+}
+
+#width_span {
+    grid-area: widthspan;
+}
+
+#width {
+    grid-area: widthfield;
+}
+
+.width_error {
+    grid-area: widtherror;
+}
+
+#length_span {
+    grid-area: lengthspan;
+}
+
+#length {
+    grid-area: lengthfield;
+}
+
+.length_error {
+    grid-area: lengtherror;
+}
+
+#product_desc {
+    grid-area: product_descr;
+    margin-top: 1em;
+
+    span:not(#size_desc) {
+        bottom: 1.6em;
+        position: relative;
+    }
+}
+
+/* -------------------------------------------- */

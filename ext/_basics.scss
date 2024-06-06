@@ -1,0 +1,38 @@
+/* Styling some basic elements */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body,
+html {
+    border: 0px;
+    font-family: 'Open Sans', sans-serif;
+    height: 100vh;
+    margin: 0px;
+    min-height: -webkit-fill-available;
+    min-height: 100vh;
+    padding: 0px;
+}
+
+a {
+    list-style: none;
+    text-decoration: none;
+}
+
+h1 {
+    height: 0.1em;
+}
+
+
+@media screen and (max-width: 450px) {
+    html {
+        transform: scale(0.9) !important;
+    }
+}
+
+
+
+/* -------------------------------------------- */
