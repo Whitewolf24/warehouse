@@ -9,12 +9,7 @@ RUN apt-get update && apt-get install -y \
     zip \
     git \
     curl \
-    libzip-dev \
-    libpng-dev \
-    libjpeg62-turbo-dev \
-    libfreetype6-dev \
-    && docker-php-ext-configure zip \
-    && docker-php-ext-install zip pdo pdo_mysql gd
+    nginx
 
 # Install Composer globally
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
@@ -22,17 +17,17 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Set the working directory
 WORKDIR /var/www
 
-# Copy application files into the container
+# Copy your application files into the container
 COPY . .
-
-# Set proper file permissions
-RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 
 # Install Laravel dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Expose port 9000 for PHP-FPM
-EXPOSE 9000
+# Set up Nginx configuration
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Run PHP-FPM server
-CMD ["php-fpm"]
+# Expose HTTP port
+EXPOSE 80
+
+# Start Nginx and PHP-FPM
+CMD ["sh", "-c", "php-fpm & nginx -g 'daemon off;'"]
