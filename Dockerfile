@@ -1,7 +1,7 @@
-# Use an official PHP base image with FPM
-FROM php:8.1-fpm
+# Use PHP 8.2-fpm instead of 8.1
+FROM php:8.2-fpm
 
-# Install system dependencies and PHP extensions
+# Install necessary system dependencies and PHP extensions
 RUN apt-get update && apt-get install -y \
     libpng-dev \
     libjpeg-dev \
@@ -22,7 +22,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 # Set the working directory
 WORKDIR /var/www
 
-# Copy application files to the container
+# Copy application files into the container
 COPY . .
 
 # Set proper file permissions
@@ -31,8 +31,8 @@ RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 # Install Laravel dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Expose port 9000
+# Expose port 9000 for PHP-FPM
 EXPOSE 9000
 
-# Start PHP-FPM server
+# Run PHP-FPM server
 CMD ["php-fpm"]
