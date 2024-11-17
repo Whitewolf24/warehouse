@@ -1,0 +1,22 @@
+/* Styling the footer and its elements */
+
+@use 'variables';
+
+footer {
+    border-top: solid variables.$hr 2px;
+    font-size: max(2.2vmin, 85%);
+    @include variables.headfoot_style;
+
+    p {
+        margin-top: 1.5em;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    footer {
+        width: 98% !important;
+    }
+}
+
+/* -------------------------------------------- */
