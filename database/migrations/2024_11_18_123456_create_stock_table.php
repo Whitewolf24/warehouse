@@ -12,8 +12,8 @@ class CreateStockTable extends Migration
         Schema::create('stock', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('sku')->unique();
-            $table->string('name')->change();
-            $table->string('price')->change();
+            $table->string('name');
+            $table->string('price');
             $table->string('size')->nullable();
             $table->string('weight')->nullable();
             $table->string('height')->nullable();
