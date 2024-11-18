@@ -26,9 +26,6 @@ RUN composer install --no-dev --optimize-autoloader
 # Install PostgreSQL PDO extension
 RUN apt-get install -y libpq-dev && docker-php-ext-install pdo pdo_pgsql
 
-# Run the migrations (make sure DB settings are correct)
-RUN php artisan migrate --force
-
 # Set up Nginx configuration
 COPY nginx.conf /etc/nginx/nginx.conf
 
