@@ -7,7 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <script src="https://code.jquery.com/jquery-3.6.1.min.js" crossorigin="anonymous"></script>
    <title>Product List</title>
-   <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+   <link href="https://warehouse-riwu.onrender.com/css/style.css" rel="stylesheet">
 </head>
 
 <body>
