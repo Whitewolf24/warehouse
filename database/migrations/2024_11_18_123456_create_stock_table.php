@@ -13,13 +13,12 @@ class CreateStockTable extends Migration
             $table->id();
             $table->string('sku');
             $table->string('name');
-            $table->decimal('price', 8, 2);
-            $table->integer('size');
-            $table->decimal('weight', 8, 2);
-            $table->decimal('height', 8, 2);
-            $table->decimal('width', 8, 2);
-            $table->decimal('length', 8, 2);
-            $table->timestamps();
+            $table->string('price');
+            $table->string('size');
+            $table->string('weight');
+            $table->string('height');
+            $table->string('width');
+            $table->string('length');
         });
     }
 
