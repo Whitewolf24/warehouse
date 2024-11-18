@@ -11,7 +11,7 @@
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
    <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
-   <script src="https://warehouse-riwu.onrender.com/js/app.js"></script>
+   <script src="https://warehouse-riwu.onrender.com/js/script.js"></script>
 </head>
 
 <body>
