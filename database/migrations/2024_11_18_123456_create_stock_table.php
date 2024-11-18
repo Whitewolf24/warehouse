@@ -14,11 +14,11 @@ class CreateStockTable extends Migration
             $table->string('sku')->unique()->change();
             $table->string('name')->change();
             $table->string('price')->change();
-            $table->string('size')->change();
-            $table->string('weight')->change();
-            $table->string('height')->change();
-            $table->string('width')->change();
-            $table->string('length')->change();
+            $table->string('size')->nullable()->change();
+            $table->string('weight')->nullable()->change();
+            $table->string('height')->nullable()->change();
+            $table->string('width')->nullable()->change();
+            $table->string('length')->nullable()->change();
         });
     }
 
