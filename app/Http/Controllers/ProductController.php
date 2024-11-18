@@ -28,12 +28,12 @@ class ProductController extends Controller
         $validated = $request->validate([
             'sku' => 'required|string|max:255|unique:stock', // Ensure uniqueness in the 'stock' table
             'name' => 'required|string|max:255',
-            'price' => 'required|string',
-            'size' => 'nullable|string',   // Size is only for DVD type, so it can be nullable
-            'weight' => 'nullable|string', // Weight is only for Book type, so nullable
-            'height' => 'nullable|string', // Height is for Furniture, so nullable
-            'width' => 'nullable|string',  // Width is for Furniture, so nullable
-            'length' => 'nullable|string', // Length is for Furniture, so nullable
+            'price' => 'required|string|max:255',
+            'size' => 'nullable|string|max:255',   // Size is only for DVD type, so it can be nullable
+            'weight' => 'nullable|string|max:255', // Weight is only for Book type, so nullable
+            'height' => 'nullable|string|max:255', // Height is for Furniture, so nullable
+            'width' => 'nullable|string|max:255',  // Width is for Furniture, so nullable
+            'length' => 'nullable|string|max:255', // Length is for Furniture, so nullable
         ]);
 
         // Process price, append the $ symbol
