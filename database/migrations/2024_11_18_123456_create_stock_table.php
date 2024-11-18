@@ -10,15 +10,15 @@ class CreateStockTable extends Migration
     public function up()
     {
         Schema::create('stock', function (Blueprint $table) {
-            $table->id();
-            $table->string('sku');
-            $table->string('name');
-            $table->string('price');
-            $table->string('size');
-            $table->string('weight');
-            $table->string('height');
-            $table->string('width');
-            $table->string('length');
+            $table->bigIncrements('id')->change();
+            $table->string('sku')->unique()->change();
+            $table->string('name')->change();
+            $table->string('price')->change();
+            $table->string('size')->change();
+            $table->string('weight')->change();
+            $table->string('height')->change();
+            $table->string('width')->change();
+            $table->string('length')->change();
         });
     }
 
