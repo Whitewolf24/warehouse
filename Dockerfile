@@ -1,4 +1,4 @@
-# Use PHP 8.2-fpm instead of 8.1
+
 FROM php:8.2-fpm
 
 # Install necessary system dependencies and PHP extensions
