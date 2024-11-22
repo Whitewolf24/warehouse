@@ -6,7 +6,7 @@
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Add Product</title>
-   <link href="https://warehouse-riwu.onrender.com/css/style.css" rel="stylesheet">
+   <!--  <link href="https://warehouse-riwu.onrender.com/css/style.css" rel="stylesheet"> -->
    <link rel="preconnect" href="https://fonts.googleapis.com">
    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -25,74 +25,82 @@
          </div>
       </header>
 
-      <main id="main_content_add">
-         <div id="product_desc">
-            <span id="size_desc" class="description">Please, provide size in MB for DVD</span><br>
-            <span id="weight_desc" class="description">Please, provide weight for Book</span><br>
-            <span id="hwl_desc" class="description">Please, provide dimensions in HxWxL format for Furniture</span><br>
-         </div>
+      <main>
 
-         <div id="main_content_add_grid">
+         <div id="form">
             <!-- SKU Field -->
-            <div class="form-group">
-               <label for="sku">SKU</label>
+            <div>
+               <label for="sku">
+                  <p id="sku_label">SKU</p>
+               </label>
                <input type="text" name="sku" id="sku" value="{{ old('sku') }}" required>
                @error('sku') <div class="error">{{ $message }}</div> @enderror
             </div>
 
-            <!-- Product Name Field -->
-            <div class="form-group">
-               <label for="name">Product Name</label>
+            <!-- Name Field -->
+            <div id="name_div">
+               <label for="name">
+                  <p id="name_label">Product Name</p>
+               </label>
                <input type="text" name="name" id="name" value="{{ old('name') }}" required>
                @error('name') <div class="error">{{ $message }}</div> @enderror
             </div>
 
-            <!-- Price Field (with decimal formatting) -->
-            <div class="form-group">
-               <label for="price">Price</label>
+            <!-- Price Field -->
+            <div>
+               <label for="price">
+                  <p id="price_label">Price</p>
+               </label>
                <input type="text" name="price" id="price" value="{{ old('price') }}" required>
                @error('price') <div class="error">{{ $message }}</div> @enderror
             </div>
 
-            <!-- Product Type and Dropdown Side by Side -->
-            <div class="form-group">
-               <label for="productType">Product Type:</label>
+            <div id="product_div">
+               <!-- Product Type Dropdown -->
+               <label for="productType" id="productType_label">Product Type:</label>
                <select name="productType" id="productType" required>
                   <option value="val1">DVD</option>
                   <option value="val2">Book</option>
                   <option value="val3">Furniture</option>
                </select>
-               @error('productType') <div class="error">{{ $message }}</div> @enderror
-            </div>
+               @error('productType')
+               <div class="error">{{ $message }}</div> @enderror
 
-            <div id="attrib_form">
-               <!-- Size Field (Visible only for DVD) -->
-               <div class="form-group" id="size-field" style="display: none;">
-                  <label for="size">Size (MB)</label>
-                  <input type="number" name="size" id="size" value="{{ old('size') }}">
-                  @error('size') <div class="error">{{ $message }}</div> @enderror
-               </div>
+               <div id="type_fields">
+                  <!-- DVD -->
+                  <div id="size-field" style="display: none;">
+                     <label for="size">Size (MB)</label>
+                     <input type="number" name="size" id="size" value="{{ old('size') }}">
+                     @error('size') <div class="error">{{ $message }}</div> @enderror
+                  </div>
 
-               <!-- Weight Field (Visible only for Book) -->
-               <div class="form-group" id="weight-field" style="display: none;">
-                  <label for="weight">Weight (KG)</label>
-                  <input type="number" name="weight" id="weight" value="{{ old('weight') }}">
-                  @error('weight') <div class="error">{{ $message }}</div> @enderror
-               </div>
+                  <!-- Book -->
+                  <div id="weight-field" style="display: none;">
+                     <label for="weight">Weight (KG)</label>
+                     <input type="number" name="weight" id="weight" value="{{ old('weight') }}">
+                     @error('weight') <div class="error">{{ $message }}</div> @enderror
+                  </div>
 
-               <!-- Dimensions Fields (Visible only for Furniture) -->
-               <div class="form-group" id="dimensions-field" style="display: none;">
-                  <label for="height">Height (CM)</label>
-                  <input type="number" name="height" id="height" value="{{ old('height') }}">
-                  @error('height') <div class="error">{{ $message }}</div> @enderror
+                  <!-- Furniture -->
+                  <div id="dimensions-field" style="display: none;">
+                     <label for="height">Height (CM)</label>
+                     <input type="number" name="height" id="height" value="{{ old('height') }}">
+                     @error('height') <div class="error">{{ $message }}</div> @enderror
 
-                  <label for="width">Width (CM)</label>
-                  <input type="number" name="width" id="width" value="{{ old('width') }}">
-                  @error('width') <div class="error">{{ $message }}</div> @enderror
+                     <label for="width">Width (CM)</label>
+                     <input type="number" name="width" id="width" value="{{ old('width') }}">
+                     @error('width') <div class="error">{{ $message }}</div> @enderror
 
-                  <label for="length">Length (CM)</label>
-                  <input type="number" name="length" id="length" value="{{ old('length') }}">
-                  @error('length') <div class="error">{{ $message }}</div> @enderror
+                     <label for="length">Length (CM)</label>
+                     <input type="number" name="length" id="length" value="{{ old('length') }}">
+                     @error('length') <div class="error">{{ $message }}</div> @enderror
+                  </div>
+
+                  <div id="product_desc">
+                     <span id="size_desc" class="description">Please, provide size in MB for DVD</span><br>
+                     <span id="weight_desc" class="description">Please, provide weight for Book</span><br>
+                     <span id="hwl_desc" class="description">Please, provide dimensions in HxWxL format for Furniture</span><br>
+                  </div>
                </div>
             </div>
          </div>
@@ -145,7 +153,7 @@
 
    .buttons button {
       border: solid black 2px;
-      bottom: 2.6em;
+      bottom: 0.5em;
       display: block;
       filter: drop-shadow(2px 2px 2px #000);
       float: right;
@@ -154,9 +162,9 @@
       position: relative;
    }
 
-   header h1 {
+   /*  header h1 {
       margin-bottom: 1.3em;
-   }
+   } */
 
    #add-product-btn {
       right: 11em;
@@ -175,204 +183,168 @@
    }
 
    /* -------------------------------------------- */
-   /* Styling the footer and its elements */
-   footer {
-      border-top: solid rgb(100, 100, 100) 2px;
-      font-size: max(2.2vmin, 85%);
-      left: 2em;
-      position: relative;
-      width: 92%;
-   }
 
-   footer p {
-      margin-top: 1.5em;
-      text-align: center;
-   }
-
-   /* -------------------------------------------- */
-   /* Styling the main content of both pages */
-
-   /* First page */
-   #main_content {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2em 2em;
-      justify-content: center;
-      margin-block: 3em;
-      margin-inline: 13em;
-   }
-
-
-   .box {
-      border: solid black 2px;
-      font-size: max(2.2vmin, 90%);
-      height: 13em;
-      min-height: 13em;
-      min-width: 15em;
-      width: 15em;
-   }
-
-   .delete-checkbox {
-      height: 10%;
-      margin-left: 1em;
-      margin-top: 1.5em;
-      width: 7%;
-   }
-
-   .fields {
-      bottom: 1em;
-      position: relative;
-      text-align: center;
-   }
-
-   .fields p {
-      line-height: 0.6;
-   }
-
-   /* Second page */
-   /* Grid for the 1st part of the form */
-   /* #main_content_add {
-  font-size: max(2.2vmin, 90%);
-  margin-top: 2em;
-  margin-inline: 2em;
-}
-
-#main_content_add span {
-  margin-inline: 2em;
-  width: 90%;
-}
-
-#main_content_add input:not(#price) {
-  margin-bottom: 1em;
-}
-
-#main_content_add select {
-  font-size: max(2.1vmin, 85%);
-  grid-area: options;
-  height: 35%;
-  justify-self: center;
-  left: 2em;
-  margin-bottom: 3em;
-  position: relative;
-  top: 3.1em;
-  width: 60%;
-}
-
-#main_content_add_grid {
-  display: grid;
-  gap: 0.5em;
-  grid-template-areas: "skuspan skufield skuerror" "namespan namefield nameerror" "pricespan pricefield priceerror" "types options ...";
-  grid-template-columns: 5em 10em 15em;
-  grid-template-rows: repeat(4, 0.5fr);
-}
-
-#main_content_add_grid span {
-  align-self: center;
-  width: 90%;
-}
-
-#main_content_add_grid input {
-  height: 65%;
-  top: 0.7em;
-  border-radius: 5%;
-  border: 1.5px black solid;
-  justify-self: right;
-  left: 1em;
-  position: relative;
-  width: 80%;
-} */
-
-   /* Grid for the different types*/
-   #attrib_form {
+   #form {
       display: grid;
-      gap: 0.5em;
-      grid-template-areas: "first_attr_span first_attr_field first_attr_error" "product_descr product_descr ...";
-      grid-template-columns: 5em 10em 15em;
-      grid-template-rows: repeat(4, 0.5fr);
-      margin-top: 2.3em;
+      grid-template-columns: repeat(3, 0.3fr);
+      grid-template-rows: repeat(3, 0.2fr);
+      grid-row-gap: 35px;
+      margin-top: 10em;
+      margin-left: 4em;
+      text-align: center;
    }
 
-   #attrib_form span {
-      align-self: center;
-      width: 125%;
+   @media only screen and (max-width: 1000px) and (min-width: 800px) {
+      #form {
+         margin-left: 1em;
+      }
    }
 
-   #attrib_form input {
-      align-self: center;
-      /*   height: 55%; */
-      top: 0.5em;
+   @media only screen and (max-width: 800px) {
+      #form {
+         margin-left: -3em;
+      }
+   }
+
+   @media only screen and (max-height: 520px) and (min-height: 470px) {
+      #form {
+         margin-top: 6em;
+      }
+   }
+
+   @media only screen and (max-height: 470px) {
+      #form {
+         margin-top: 4em;
+      }
+   }
+
+
+
+   #form input {
+      height: 25px;
       border-radius: 5%;
       border: 1.5px black solid;
-      justify-self: right;
-      left: 1em;
       position: relative;
-      width: 80%;
-      height: 3rem;
-      transition: visibility 0s, height 0.3s ease-out;
+      width: 150px;
+      /*       transition: visibility 0s, height 0.3s ease-out; */
    }
 
+   #form input:not(#sku) {
+      top: 0.5em;
+   }
 
-
-   /* Grid assign*/
-   #sku_span {
-      grid-area: skuspan;
+   #sku_label {
+      position: relative;
+      bottom: 1em;
    }
 
    #sku {
-      grid-area: skufield;
+      bottom: 2em;
    }
 
-   #sku_error {
-      grid-area: skuerror;
-   }
-
-   #name_span {
-      grid-area: namespan;
-   }
-
-   #name {
-      grid-area: namefield;
-   }
-
-   #name_error {
-      grid-area: nameerror;
-   }
-
-   #price_span {
-      grid-area: pricespan;
-   }
-
-   #price {
-      grid-area: pricefield;
-   }
-
-   #price_error {
-      grid-area: priceerror;
-   }
-
-   #types {
-      grid-area: types;
-      margin-block: 1em;
+   #name_label {
       position: relative;
-      top: 1em;
+      bottom: 1em;
+      margin-bottom: -1em;
    }
 
-   #size_span,
-   #height_span,
-   #weight_span {
-      grid-area: first_attr_span;
+   #price_label {
+      position: relative;
+      bottom: 1.1em;
+      margin-bottom: -1.05em;
    }
 
-   #size,
-   #height,
-   #weight {
-      grid-area: first_attr_field;
+   #name_div {
+      position: relative;
+      right: 4em;
    }
 
-   .size_error,
-   .height_error,
-   .weight_error {
-      grid-area: first_attr_error;
+   #product_div {
+      display: flex;
+      position: relative;
+      left: 15em;
+   }
+
+   @media only screen and (min-width: 1500px) {
+      #product_div {
+         left: 19em;
+      }
+   }
+
+   @media only screen and (min-width: 1650px) {
+      #product_div {
+         left: 24em;
+      }
+   }
+
+   @media only screen and (min-width: 1850px) {
+      #product_div {
+         left: 29em;
+      }
+   }
+
+   #productType_label {
+      position: relative;
+      top: 0.5em;
+   }
+
+   @media only screen and (min-width: 1650px) {
+      #productType_label {
+         top: 1.5em;
+      }
+   }
+
+   #productType {
+      position: relative;
+      left: 1em;
+      height: 30px;
+      top: 1.6em;
+   }
+
+   #type_fields {
+      position: relative;
+      left: 5em;
+      bottom: 1em;
+   }
+
+   @media only screen and (min-width: 1500px) {
+      #type_fields {
+         left: 15em;
+      }
+   }
+
+   @media only screen and (min-width: 1650px) {
+      #type_fields {
+         left: 15em;
+      }
+   }
+
+   @media only screen and (min-width: 1850px) {
+      #type_fields {
+         left: 20em;
+      }
+   }
+
+
+   #type_fields label {
+      position: relative;
+      top: 0.4em;
+   }
+
+   #type_fields input {
+      margin-block: 1em;
+      margin-left: 5em;
+   }
+
+   #type_fields input:not() {
+      margin-left: 0.5em;
+   }
+
+   #dimensions-field,
+   #size-field,
+   #weight-field {
+      display: flex;
+      flex-direction: column;
    }
 
    #size_desc {
@@ -380,37 +352,18 @@
       position: relative;
    }
 
-   #width_span {
-      grid-area: widthspan;
-   }
-
-   #width {
-      grid-area: widthfield;
-   }
-
-   .width_error {
-      grid-area: widtherror;
-   }
-
-   #length_span {
-      grid-area: lengthspan;
-   }
-
-   #length {
-      grid-area: lengthfield;
-   }
-
-   .length_error {
-      grid-area: lengtherror;
-   }
-
    #product_desc {
-      grid-area: product_descr;
-      margin-top: 1em;
+      margin-top: 1.5em;
+      position: relative;
+      width: 32ch;
    }
 
    #product_desc span:not(#size_desc) {
       bottom: 1.6em;
       position: relative;
+   }
+
+   #width {
+      margin-left: 1em;
    }
 </style>

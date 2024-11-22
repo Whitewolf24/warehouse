@@ -7,64 +7,76 @@ use App\Models\Product;
 
 class ProductController extends Controller
 {
-    // Show product list (index page)
+
     public function index()
     {
         // Fetch all products from the 'stock' table
         $products = Product::all();
-        return view('product.index', compact('products'));  // Pass products to the view
+        return view('product.index', compact('products'));
     }
 
-    // Show form for adding product (add.blade.php)
+    // Show form add.blade.php
     public function showForm()
     {
-        return view('product.add');  // Return the add product page
+        return view('product.add');
     }
 
     // Save a new product to the database
     public function saveProduct(Request $request)
     {
-        // Validate incoming request
-        $validated = $request->validate([
-            'sku' => 'required|string|max:255|unique:stock', // Ensure uniqueness in the 'stock' table
+
+        $types = [
+            'val1' => 'DVD',
+            'val2' => 'Book',
+            'val3' => 'Furniture',
+        ];
+
+        $productType = $types[$request->productType] ?? null;
+
+        $rules = [
+            'sku' => 'required|string|max:255|unique:stock',
             'name' => 'required|string|max:255',
-            'price' => 'required|string|max:255',
-            'size' => 'nullable|string|max:255',   // Size is only for DVD type, so it can be nullable
-            'weight' => 'nullable|string|max:255', // Weight is only for Book type, so nullable
-            'height' => 'nullable|string|max:255', // Height is for Furniture, so nullable
-            'width' => 'nullable|string|max:255',  // Width is for Furniture, so nullable
-            'length' => 'nullable|string|max:255', // Length is for Furniture, so nullable
-        ]);
+            'price' => 'required|numeric|min:0',
+            'size' => $productType === 'DVD' ? 'required|numeric|min:0' : 'nullable',
+            'weight' => $productType === 'Book' ? 'required|numeric|min:0' : 'nullable',
+            'height' => $productType === 'Furniture' ? 'required|numeric|min:0' : 'nullable',
+            'width' => $productType === 'Furniture' ? 'required|numeric|min:0' : 'nullable',
+            'length' => $productType === 'Furniture' ? 'required|numeric|min:0' : 'nullable',
+        ];
+        $validated = $request->validate($rules);
 
-        // Process price, append the $ symbol
-        $price = $validated['price'] . '$';
+        // append the $ symbol
+        $price = $validated['price'] . ' $';
 
-        // Process weight, append the 'kg' unit
-        $weight = isset($validated['weight']) ? $validated['weight'] . ' kg' : null;
+        // append the 'kg'
+        $weight = $productType === 'Book' && isset($validated['weight'])
+            ? $validated['weight'] . ' kg'
+            : null;
 
-        // Process dimensions (height, width, length) and combine them with 'x'
+        // Combine dimensions into a single field if the product is Furniture
         $dimensions = null;
-        if (isset($validated['height']) && isset($validated['width']) && isset($validated['length'])) {
-            $dimensions = $validated['height'] . 'x' . $validated['width'] . 'x' . $validated['length'];
+        if ($productType === 'Furniture') {
+            $dimensions = implode('x', [
+                $validated['height'] ?? 0,
+                $validated['width'] ?? 0,
+                $validated['length'] ?? 0,
+            ]);
         }
 
-        // Create a new product in the 'stock' table
-        $product = Product::create([
+        // Create the product and store the data
+        \App\Models\Product::create([
             'sku' => $validated['sku'],
             'name' => $validated['name'],
-            'price' => $price,  // Price with the $ symbol
-            'size' => $validated['size'] ?? null,  // Size is nullable
-            'weight' => $weight,  // Weight with the 'kg' unit
-            'height' => $dimensions ? explode('x', $dimensions)[0] : null,  // If dimensions exist, set height
-            'width' => $dimensions ? explode('x', $dimensions)[1] : null,  // If dimensions exist, set width
-            'length' => $dimensions ? explode('x', $dimensions)[2] : null,  // If dimensions exist, set length
+            'price' => $price,
+            'size' => $productType === 'DVD' ? $validated['size'] : null,
+            'weight' => $weight,
+            'dimensions' => $productType === 'Furniture' ? $dimensions : null,
         ]);
 
-        // Redirect back to the product list page with success message
         return redirect()->route('product.index')->with('success', 'Product added successfully!');
     }
 
-    // Handle mass delete action
+
     public function massDelete(Request $request)
     {
         // Check if any IDs are selected for deletion

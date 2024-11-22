@@ -7,7 +7,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <script src="https://code.jquery.com/jquery-3.6.1.min.js" crossorigin="anonymous"></script>
    <title>Product List</title>
-   <link href="https://warehouse-riwu.onrender.com/css/style.css" rel="stylesheet">
+   <!--    <link href="https://warehouse-riwu.onrender.com/css/style.css" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -34,11 +34,8 @@
             @if(count($products) > 0)
             @foreach($products as $product)
             <div class="box product-box">
-               <!-- Checkbox field outside the fields class -->
                <input type="checkbox" name="ids[]" value="{{ $product->id }}" class="delete-checkbox">
 
-               <!-- Product fields directly inside the product box -->
-               <!-- Use the exact attribute names from dd() -->
                <p class="fields product-sku">{{ $product->SKU }}</p>
                <p class="fields product-name">{{ $product->Name }}</p>
                <p class="fields product-price">{{ $product->Price }}</p>
@@ -126,24 +123,22 @@
    }
 
    /* -------------------------------------------- */
-   /* Styling the footer and its elements */
-   footer {
-      border-top: solid rgb(100, 100, 100) 2px;
-      font-size: max(2.2vmin, 85%);
-      left: 2em;
-      position: relative;
-      width: 92%;
-   }
-
-   footer p {
-      margin-top: 1.5em;
-      text-align: center;
-   }
-
-   /* -------------------------------------------- */
-   /* Styling the main content of both pages */
+   /* Styling the main content */
 
    /* First page */
+
+   .alert-success {
+      text-align: center;
+      margin-top: 2em;
+      color: green;
+   }
+
+   .alert-error {
+      text-align: center;
+      margin-top: 2em;
+      color: red;
+   }
+
    #main_content {
       display: flex;
       flex-wrap: wrap;
@@ -179,191 +174,4 @@
    .fields p {
       line-height: 0.6;
    }
-
-   /* Second page */
-   /* Grid for the 1st part of the form */
-   /* #main_content_add {
-  font-size: max(2.2vmin, 90%);
-  margin-top: 2em;
-  margin-inline: 2em;
-}
-
-#main_content_add span {
-  margin-inline: 2em;
-  width: 90%;
-}
-
-#main_content_add input:not(#price) {
-  margin-bottom: 1em;
-}
-
-#main_content_add select {
-  font-size: max(2.1vmin, 85%);
-  grid-area: options;
-  height: 35%;
-  justify-self: center;
-  left: 2em;
-  margin-bottom: 3em;
-  position: relative;
-  top: 3.1em;
-  width: 60%;
-}
-
-#main_content_add_grid {
-  display: grid;
-  gap: 0.5em;
-  grid-template-areas: "skuspan skufield skuerror" "namespan namefield nameerror" "pricespan pricefield priceerror" "types options ...";
-  grid-template-columns: 5em 10em 15em;
-  grid-template-rows: repeat(4, 0.5fr);
-}
-
-#main_content_add_grid span {
-  align-self: center;
-  width: 90%;
-}
-
-#main_content_add_grid input {
-  height: 65%;
-  top: 0.7em;
-  border-radius: 5%;
-  border: 1.5px black solid;
-  justify-self: right;
-  left: 1em;
-  position: relative;
-  width: 80%;
-} */
-
-   /* Grid for the different types*/
-   #attrib_form {
-      display: grid;
-      gap: 0.5em;
-      grid-template-areas: "first_attr_span first_attr_field first_attr_error" "product_descr product_descr ...";
-      grid-template-columns: 5em 10em 15em;
-      grid-template-rows: repeat(4, 0.5fr);
-      margin-top: 2.3em;
-   }
-
-   #attrib_form span {
-      align-self: center;
-      width: 125%;
-   }
-
-   #attrib_form input {
-      align-self: center;
-      /*   height: 55%; */
-      top: 0.5em;
-      border-radius: 5%;
-      border: 1.5px black solid;
-      justify-self: right;
-      left: 1em;
-      position: relative;
-      width: 80%;
-      height: 3rem;
-      transition: visibility 0s, height 0.3s ease-out;
-   }
-
-
-
-   /* Grid assign*/
-   #sku_span {
-      grid-area: skuspan;
-   }
-
-   #sku {
-      grid-area: skufield;
-   }
-
-   #sku_error {
-      grid-area: skuerror;
-   }
-
-   #name_span {
-      grid-area: namespan;
-   }
-
-   #name {
-      grid-area: namefield;
-   }
-
-   #name_error {
-      grid-area: nameerror;
-   }
-
-   #price_span {
-      grid-area: pricespan;
-   }
-
-   #price {
-      grid-area: pricefield;
-   }
-
-   #price_error {
-      grid-area: priceerror;
-   }
-
-   #types {
-      grid-area: types;
-      margin-block: 1em;
-      position: relative;
-      top: 1em;
-   }
-
-   #size_span,
-   #height_span,
-   #weight_span {
-      grid-area: first_attr_span;
-   }
-
-   #size,
-   #height,
-   #weight {
-      grid-area: first_attr_field;
-   }
-
-   .size_error,
-   .height_error,
-   .weight_error {
-      grid-area: first_attr_error;
-   }
-
-   #size_desc {
-      bottom: 0.3em;
-      position: relative;
-   }
-
-   #width_span {
-      grid-area: widthspan;
-   }
-
-   #width {
-      grid-area: widthfield;
-   }
-
-   .width_error {
-      grid-area: widtherror;
-   }
-
-   #length_span {
-      grid-area: lengthspan;
-   }
-
-   #length {
-      grid-area: lengthfield;
-   }
-
-   .length_error {
-      grid-area: lengtherror;
-   }
-
-   #product_desc {
-      grid-area: product_descr;
-      margin-top: 1em;
-   }
-
-   #product_desc span:not(#size_desc) {
-      bottom: 1.6em;
-      position: relative;
-   }
-
-
 </style>
