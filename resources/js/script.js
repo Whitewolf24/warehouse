@@ -50,13 +50,16 @@ $(document).ready(function () {
     });
 
     $("#size").on('blur', function () {
-        var size = $(this).val();
-        size = size.replace(/[^0-9.]/g, '');
+        let size = $(this).val();
+        size = size.replace(/[^0-9.]/g, '');  // Remove any non-numeric characters except dot
+
         if (size) {
-            var formattedSize = parseFloat(size).toFixed(1);
-            $(this).val(formattedSize);
+            // Format to remove trailing zeros, but keep one decimal if needed
+            let formattedSize = parseFloat(size);
+            // This will convert the number to a string without unnecessary trailing zeros
+            $(this).val(formattedSize.toString());
         } else {
-            $(this).val('0.000');
+            $(this).val('0');
         }
     });
 
