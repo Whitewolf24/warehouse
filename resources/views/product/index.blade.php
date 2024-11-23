@@ -39,6 +39,11 @@
                <p class="fields product-sku">{{ $product->sku}}</p>
                <p class="fields product-name">{{ $product->name}}</p>
                <p class="fields product-price">{{ $product->price}}</p>
+               <p class="fields product-size">{{ $product->size}}</p>
+               <p class="fields product-weight">{{ $product->weight}}</p>
+               <p class="fields product-height">{{ $product->height}}</p>
+               <p class="fields product-width">{{ $product->width}}</p>
+               <p class="fields product-length">{{ $product->length}}</p>
             </div>
             @endforeach
             @else
