@@ -56,7 +56,7 @@ $(document).ready(function () {
             var formattedSize = parseFloat(size).toFixed(1);
             $(this).val(formattedSize);
         } else {
-            $(this).val('0.0');
+            $(this).val('0.000');
         }
     });
 
