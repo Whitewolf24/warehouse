@@ -77,22 +77,22 @@
                   <!-- Book -->
                   <div id="weight-field" style="display: none;">
                      <label for="weight">Weight (KG)</label>
-                     <input type="number" name="weight" id="weight" value="{{ old('weight') }}">
+                     <input type="text" name="weight" id="weight" value="{{ old('weight') }}">
                      @error('weight') <div class="error">{{ $message }}</div> @enderror
                   </div>
 
                   <!-- Furniture -->
                   <div id="dimensions-field" style="display: none;">
                      <label for="height">Height (CM)</label>
-                     <input type="number" name="height" id="height" value="{{ old('height') }}">
+                     <input type="text" name="height" id="height" value="{{ old('height') }}">
                      @error('height') <div class="error">{{ $message }}</div> @enderror
 
                      <label for="width">Width (CM)</label>
-                     <input type="number" name="width" id="width" value="{{ old('width') }}">
+                     <input type="text" name="width" id="width" value="{{ old('width') }}">
                      @error('width') <div class="error">{{ $message }}</div> @enderror
 
                      <label for="length">Length (CM)</label>
-                     <input type="number" name="length" id="length" value="{{ old('length') }}">
+                     <input type="text" name="length" id="length" value="{{ old('length') }}">
                      @error('length') <div class="error">{{ $message }}</div> @enderror
                   </div>
 
