@@ -41,7 +41,9 @@
                <p class="fields product-price">{{ $product->price}}</p>
                <p class="fields product-size">{{ $product->size}}</p>
                <p class="fields product-weight">{{ $product->weight}}</p>
-               <p class="fields product-furniture">{{ $product->height}}{{ $product->width}}{{ $product->length}}</p>
+               <p class="fields product-dimensions"> 
+               {{ $product->formatted_dimensions }}
+                   </p>
             </div>
             @endforeach
             @else
