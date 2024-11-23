@@ -70,7 +70,7 @@
                   <!-- DVD -->
                   <div id="size-field" style="display: none;">
                      <label for="size">Size (MB)</label>
-                     <input type="number" name="size" id="size" value="{{ old('size') }}">
+                     <input type="text" name="size" id="size" value="{{ old('size') }}">
                      @error('size') <div class="error">{{ $message }}</div> @enderror
                   </div>
 
