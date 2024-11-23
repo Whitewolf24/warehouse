@@ -36,9 +36,9 @@
             <div class="box product-box">
                <input type="checkbox" name="ids[]" value="{{ $product->id }}" class="delete-checkbox">
 
-               <p class="fields product-sku">{{ $product->SKU }}</p>
-               <p class="fields product-name">{{ $product->Name }}</p>
-               <p class="fields product-price">{{ $product->Price }}</p>
+               <p class="fields product-sku">{{ $product->sku}}</p>
+               <p class="fields product-name">{{ $product->name}}</p>
+               <p class="fields product-price">{{ $product->price}}</p>
             </div>
             @endforeach
             @else
